@@ -9,7 +9,10 @@ Because gendered language reinforces sexism.
 
 Example
 -------
-    ruby
+    ruby demasc.rb [FILE]
+or
+    ruby demasc.rb [URL]
+
 The ralph-waldo-emerson.txt file is a collection of his essays and kate-chopin.txt is her story The Awakening and other short stories.    
     $ ./demasc.rb ralph-waldo-emerson.txt 
     reading in file: ralph-waldo-emerson.txt
@@ -22,7 +25,8 @@ The ralph-waldo-emerson.txt file is a collection of his essays and kate-chopin.t
     masculine words: 2.33%
     feminine words: 0.10%
     neutral words: 1.97%
-    22.76 times as many masculine words as there are feminine words
+    22.76 times as many masculine words are feminine words
+
 
     $ ./demasc.rb kate-chopin.txt 
     reading in file: kate-chopin.txt
@@ -35,7 +39,7 @@ The ralph-waldo-emerson.txt file is a collection of his essays and kate-chopin.t
     masculine words: 2.54%
     feminine words: 4.66%
     neutral words: 1.43%
-    1.83 times as many feminine words as there are masculine words
+    1.83 times as many feminine words as masculine words
 
 
     $ ./demasc.rb feministing.com
@@ -49,7 +53,7 @@ The ralph-waldo-emerson.txt file is a collection of his essays and kate-chopin.t
     masculine words: 0.09%
     feminine words: 0.47%
     neutral words: 0.33%
-    5.25 times as many feminine words as there are masculine words
+    5.25 times as many feminine words as masculine words
 
 
     $ ./demasc.rb stallman.org
@@ -63,7 +67,7 @@ The ralph-waldo-emerson.txt file is a collection of his essays and kate-chopin.t
     masculine words: 0.23%
     feminine words: 0.02%
     neutral words: 0.78%
-    11.00 times as many masculine words as there are feminine words
+    11.00 times as many masculine words as feminine words
     
 
 Dependencies
@@ -72,4 +76,5 @@ Dependencies
 
 Contribute
 ----------
-Send a pull request or let me know of any feature requests. The wordlists could use work I'm sure.
+Send a pull request or let me know of any feature requests. 
+The wordlists could use work I'm sure.
