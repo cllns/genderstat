@@ -7,7 +7,7 @@ require 'readability'
 require 'set'
 
 if ARGV.length != 1
-  abort("Usage: demasc [FILE] or demasc [URL]")
+  abort("Usage: genderstat [FILE] or genderstat [URL]")
 end
 
 arg = ARGV[0]
@@ -24,8 +24,8 @@ else
 end
 
 
-mas_words = Set.new ["he", "him", "his", "he's", "himself", "man", "dude", "boy", "mankind"]
-fem_words = Set.new ["she", "her", "hers", "she's", "herself", "woman", "lady", "girl", "womankind"]
+mas_words = Set.new ["he", "him", "his", "he's", "himself", "man", "dude", "boy", "mankind", "men", "dudes"]
+fem_words = Set.new ["she", "her", "hers", "she's", "herself", "woman", "lady", "girl", "womankind", "women", "ladies"]
 neu_words = Set.new ["it", "its", "itself", "it's", "humankind", "they"]
 
 all_words = text.downcase.split(" ")
@@ -47,6 +47,7 @@ all_words.each { |word|
   end
 }
 
+# calculate percentages
 per_mas_words = ((num_mas_words.to_f / all_words.length.to_f) * 100)
 per_fem_words = ((num_fem_words.to_f / all_words.length.to_f) * 100)
 per_neu_words = ((num_neu_words.to_f / all_words.length.to_f) * 100)
@@ -56,7 +57,7 @@ rat_m_to_f = num_mas_words.to_f / num_fem_words
 # Yes of course I could just use the inverse of rat_m_to_f but why bother?
 rat_f_to_m = num_fem_words.to_f / num_mas_words
 
-#clean up the floats
+#clean up the floats. no one cares about more than a couple decimal digits"
 per_mas_words_str = sprintf('%.02f', per_mas_words) + "%"
 per_fem_words_str = sprintf('%.02f', per_fem_words) + "%"
 per_neu_words_str = sprintf('%.02f', per_neu_words) + "%"

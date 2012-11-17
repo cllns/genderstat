@@ -1,7 +1,8 @@
-demasc - a text analyzer for gendered language
+genderstat - a text analyzer for gendered language
 ======
 More specifically, calclulates the amount (in terms of percentages and relative ratios) of gendered language in a file or on a site. 
 It counts the number of words like "he","his","him", etc. and compares it to the number of words like "she", "hers", "her", etc.
+
 
 Why?
 ----
@@ -9,12 +10,12 @@ Because gendered language reinforces sexism.
 
 Example
 -------
-    ruby demasc.rb [FILE]
+    ruby genderstat.rb [FILE]
 or
-    ruby demasc.rb [URL]
+    ruby genderstat.rb [URL]
 
 The ralph-waldo-emerson.txt file is a collection of his essays and kate-chopin.txt is her story The Awakening and other short stories.    
-    $ ./demasc.rb ralph-waldo-emerson.txt 
+    $ ./genderstat.rb ralph-waldo-emerson.txt 
     reading in file: ralph-waldo-emerson.txt
     
     total words:     77181
@@ -28,7 +29,7 @@ The ralph-waldo-emerson.txt file is a collection of his essays and kate-chopin.t
     22.76 times as many masculine words are feminine words
 
 
-    $ ./demasc.rb kate-chopin.txt 
+    $ ./genderstat.rb kate-chopin.txt 
     reading in file: kate-chopin.txt
     
     total words:     67024
@@ -42,7 +43,7 @@ The ralph-waldo-emerson.txt file is a collection of his essays and kate-chopin.t
     1.83 times as many feminine words as masculine words
 
 
-    $ ./demasc.rb feministing.com
+    $ ./genderstat.rb feministing.com
     reading in website: http://feministing.com
     
     total words:     4511
@@ -56,7 +57,7 @@ The ralph-waldo-emerson.txt file is a collection of his essays and kate-chopin.t
     5.25 times as many feminine words as masculine words
 
 
-    $ ./demasc.rb stallman.org
+    $ ./genderstat.rb stallman.org
     reading in website: http://stallman.org
     
     total words:     9440
