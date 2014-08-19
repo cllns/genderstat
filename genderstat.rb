@@ -4,6 +4,7 @@
 
 require 'open-uri'
 require 'readability'
+require 'yaml'
 require 'set'
 
 if ARGV.length != 1
@@ -24,9 +25,9 @@ else
 end
 
 
-mas_words = Set.new ["he", "him", "his", "he's", "himself", "man", "dude", "boy", "mankind", "men", "dudes"]
-fem_words = Set.new ["she", "her", "hers", "she's", "herself", "woman", "lady", "girl", "womankind", "women", "ladies"]
-neu_words = Set.new ["it", "its", "itself", "it's", "humankind", "they"]
+mas_words = Set.new YAML.load_file 'masculine_words.yaml'
+fem_words = Set.new YAML.load_file 'feminine_words.yaml'
+neu_words = Set.new YAML.load_file 'neutral_words.yaml'
 
 all_words = text.downcase.split(" ")
 
@@ -61,8 +62,8 @@ rat_f_to_m = num_fem_words.to_f / num_mas_words
 per_mas_words_str = sprintf('%.02f', per_mas_words) + "%"
 per_fem_words_str = sprintf('%.02f', per_fem_words) + "%"
 per_neu_words_str = sprintf('%.02f', per_neu_words) + "%"
-rat_m_to_f_str = sprintf('%.02f', rat_m_to_f) 
-rat_f_to_m_str = sprintf('%.02f', rat_f_to_m) 
+rat_m_to_f_str = sprintf('%.02f', rat_m_to_f)
+rat_f_to_m_str = sprintf('%.02f', rat_f_to_m)
 
 puts
 puts "total words:     " + all_words.length.to_s
