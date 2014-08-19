@@ -2,34 +2,21 @@
 # A program to determine how "masculine" a piece of writing is.
 # Sean Collins 11/11/12
 
-require 'open-uri'
-require 'readability'
 require 'yaml'
 require './lib/genderstat/word_list'
+require './lib/genderstat/text_reader'
 
 if ARGV.length != 1
   abort("Usage: genderstat [FILE] or genderstat [URL]")
 end
 
 arg = ARGV[0]
-
-if File.exist?(arg)
-  puts "reading in file: " + arg
-  text = IO.read(arg)
-else
-  if arg[0,7] != "http://"
-    arg = "http://" + arg
-  end
-  puts "reading in website: " + arg
-  text = open(arg).read
-end
-
+all_words = TextReader.new(arg).read
 
 mas_words = WordList.new 'masculine_words.yaml'
 fem_words = WordList.new 'feminine_words.yaml'
 neu_words = WordList.new 'neutral_words.yaml'
 
-all_words = text.downcase.split(" ")
 
 num_mas_words = 0
 num_fem_words = 0
