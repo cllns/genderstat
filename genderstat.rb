@@ -5,7 +5,7 @@
 require 'open-uri'
 require 'readability'
 require 'yaml'
-require 'set'
+require './lib/genderstat/word_list'
 
 if ARGV.length != 1
   abort("Usage: genderstat [FILE] or genderstat [URL]")
@@ -25,9 +25,9 @@ else
 end
 
 
-mas_words = Set.new YAML.load_file 'masculine_words.yaml'
-fem_words = Set.new YAML.load_file 'feminine_words.yaml'
-neu_words = Set.new YAML.load_file 'neutral_words.yaml'
+mas_words = WordList.new 'masculine_words.yaml'
+fem_words = WordList.new 'feminine_words.yaml'
+neu_words = WordList.new 'neutral_words.yaml'
 
 all_words = text.downcase.split(" ")
 
@@ -37,11 +37,11 @@ num_neu_words = 0
 num_other_words = 0
 
 all_words.each { |word|
-  if mas_words.include?(word)
+  if mas_words.is_in_here?(word)
     num_mas_words+=1
-  elsif fem_words.include?(word)
+  elsif fem_words.is_in_here?(word)
     num_fem_words+=1
-  elsif neu_words.include?(word)
+  elsif neu_words.is_in_here?(word)
     num_neu_words+=1
   else
     num_other_words+=1
