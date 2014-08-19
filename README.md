@@ -4,11 +4,6 @@ genderstat calculates the amount (in terms of percentages and relative ratios) o
 
 It counts the number of words like "he", "his", "him", etc. and compares it to the number of words like "she", "hers", "her", etc.
 
-
-Why?
----
-Because gendered language reinforces sexism.
-
 Example
 -------
 `ruby genderstat.rb [FILE]`
@@ -20,7 +15,7 @@ or
 
 ### File example ###
 
-The `ralph-waldo-emerson.txt` file is a collection of his essays and `kate-chopin.txt` is her story The Awakening and other short stories.
+The `ralph-waldo-emerson.txt` file is a collection of his essays and `kate-chopin.txt` is a collection of her stories (including The Awakening).
 ```
     $ ./genderstat.rb ralph-waldo-emerson.txt
     reading in file: ralph-waldo-emerson.txt
