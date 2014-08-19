@@ -13,37 +13,26 @@ end
 arg = ARGV[0]
 all_words = TextReader.new(arg).read
 
-mas_words = WordList.new 'masculine_words.yaml'
-fem_words = WordList.new 'feminine_words.yaml'
-neu_words = WordList.new 'neutral_words.yaml'
+@mas_words = WordList.new 'masculine_words.yaml'
+@fem_words = WordList.new 'feminine_words.yaml'
+@neu_words = WordList.new 'neutral_words.yaml'
 
-
-num_mas_words = 0
-num_fem_words = 0
-num_neu_words = 0
-num_other_words = 0
 
 all_words.each { |word|
-  if mas_words.is_in_here?(word)
-    num_mas_words+=1
-  elsif fem_words.is_in_here?(word)
-    num_fem_words+=1
-  elsif neu_words.is_in_here?(word)
-    num_neu_words+=1
-  else
-    num_other_words+=1
-  end
+  @mas_words.is_in_here?(word)
+  @fem_words.is_in_here?(word)
+  @neu_words.is_in_here?(word)
 }
 
 # calculate percentages
-per_mas_words = ((num_mas_words.to_f / all_words.length.to_f) * 100)
-per_fem_words = ((num_fem_words.to_f / all_words.length.to_f) * 100)
-per_neu_words = ((num_neu_words.to_f / all_words.length.to_f) * 100)
+per_mas_words = ((@mas_words.number_of_occurences.to_f / all_words.length.to_f) * 100)
+per_fem_words = ((@fem_words.number_of_occurences.to_f / all_words.length.to_f) * 100)
+per_neu_words = ((@neu_words.number_of_occurences.to_f / all_words.length.to_f) * 100)
 
 # cast to float to allow for infinity
-rat_m_to_f = num_mas_words.to_f / num_fem_words
+rat_m_to_f = @mas_words.number_of_occurences.to_f / @fem_words.number_of_occurences
 # Yes of course I could just use the inverse of rat_m_to_f but why bother?
-rat_f_to_m = num_fem_words.to_f / num_mas_words
+rat_f_to_m = @fem_words.number_of_occurences.to_f / @mas_words.number_of_occurences
 
 #clean up the floats. no one cares about more than a couple decimal digits"
 per_mas_words_str = sprintf('%.02f', per_mas_words) + "%"
@@ -54,9 +43,9 @@ rat_f_to_m_str = sprintf('%.02f', rat_f_to_m)
 
 puts
 puts "total words:     " + all_words.length.to_s
-puts "masculine words: " + num_mas_words.to_s
-puts "feminine words:  " + num_fem_words.to_s
-puts "neutral words:   " + num_neu_words.to_s
+puts "masculine words: " + @mas_words.number_of_occurences.to_s
+puts "feminine words:  " + @fem_words.number_of_occurences.to_s
+puts "neutral words:   " + @neu_words.number_of_occurences.to_s
 puts
 puts "masculine words: " + per_mas_words_str
 puts "feminine words: " + per_fem_words_str
