@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby -I ../lib
+
+require 'genderstat'
+
+if ARGV.length != 1
+  abort("Usage: genderstat [FILE] or genderstat [URL]")
+end
+
+Genderstat.new(ARGV[0])
