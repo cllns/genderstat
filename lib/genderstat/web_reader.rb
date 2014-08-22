@@ -19,8 +19,8 @@ class WebReader
   def handle_web_exceptions ex
     if ex == OpenURI::HTTPError || ex == SocketError
       abort "Could not open: #{url}"
-    elsif ex == Errno::ECONNREFUSED
-      abort "Does not support HTTPS: #{url}"
+    else
+      abort ex.to_s
     end
   end
 
