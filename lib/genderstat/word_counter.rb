@@ -1,10 +1,13 @@
 require 'set'
+require 'genderstat/calculator'
 
 class WordCounter
-  attr_reader :counter
+  include Calculator
+  attr_reader :counter, :name
 
   def initialize filename
     @words = Set.new YAML.load_file filename
+    @name = filename.split('_').first
     @counter = 0
   end
 

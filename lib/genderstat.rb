@@ -23,16 +23,14 @@ class Genderstat
       @neu_words.is_in_here?(word)
     }
 
-    @calc = Calculator.new @all_words
-
     print_results
   end
 
   def print_results
     # calculate percentages
-    per_mas_words = @calc.get_percent @mas_words.counter
-    per_fem_words = @calc.get_percent @fem_words.counter
-    per_neu_words = @calc.get_percent @neu_words.counter
+    per_mas_words = @mas_words.get_percent @all_words.count
+    per_fem_words = @fem_words.get_percent @all_words.count
+    per_neu_words = @neu_words.get_percent @all_words.count
 
     # cast to float to allow for infinity
     rat_m_to_f = @mas_words.counter.to_f / @fem_words.counter
