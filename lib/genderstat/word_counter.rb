@@ -1,8 +1,6 @@
 require 'set'
-require 'genderstat/calculator'
 
 class WordCounter
-  include Calculator
   attr_reader :count, :name
 
   def initialize filename
