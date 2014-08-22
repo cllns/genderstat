@@ -26,11 +26,11 @@ directory names ending with ```_words.yaml```
 
 Example
 -------
-`ruby genderstat.rb [FILE]`
+`ruby -Ilib bin/genderstat [FILE]`
 
 or
 
-`ruby genderstat.rb [URL]`
+`ruby -Ilib bin/genderstat [URL]`
 
 
 ### File example ###
