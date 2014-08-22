@@ -14,7 +14,7 @@ class TextReader
   def read_from_file
     if File.exist?(@file_location)
       puts "reading in file: " + @file_location
-      text = IO.read(@file_location)
+      IO.read(@file_location)
     end
   end
 
@@ -22,7 +22,7 @@ class TextReader
   def read_from_web
     @file_location = "http://" + @file_location if @file_location[0,7] != "http://"
     puts "reading in website: " + @file_location
-    text = open(@file_location).read
+    open(@file_location).read
   end
 
 end
