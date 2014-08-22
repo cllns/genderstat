@@ -37,65 +37,78 @@ or
 
 The `ralph-waldo-emerson.txt` file is a collection of his essays and `kate-chopin.txt` is a collection of her stories (including The Awakening).
 ```
-    $ ./genderstat.rb ralph-waldo-emerson.txt
-    reading in file: ralph-waldo-emerson.txt
+    % ruby -Ilib bin/genderstat ralph-waldo-emerson.txt
+    total words: 77181
+    feminine words: 85
+    masculine words: 1942
+    neutral words: 1714
 
-    total words:     77181
-    masculine words: 1798
-    feminine words:  79
-    neutral words:   1524
+    feminine words: 0.11%
+    masculine words: 2.52%
+    neutral words: 2.22%
 
-    masculine words: 2.33%
-    feminine words: 0.10%
-    neutral words: 1.97%
-    22.76 times as many masculine words are feminine words
+    The ratio of feminine to masculine words is 0.04
+    The ratio of feminine to neutral words is 0.05
+    The ratio of masculine to feminine words is 22.85
+    The ratio of masculine to neutral words is 1.13
+    The ratio of neutral to feminine words is 20.16
+    The ratio of neutral to masculine words is 0.88
 
 
-    $ ./genderstat.rb kate-chopin.txt
-    reading in file: kate-chopin.txt
+    % ruby -Ilib bin/genderstat kate-chopin.txt
+    total words: 67023
+    feminine words: 3147
+    masculine words: 1724
+    neutral words: 1095
 
-    total words:     67024
-    masculine words: 1705
-    feminine words:  3125
-    neutral words:   961
+    feminine words: 4.7%
+    masculine words: 2.57%
+    neutral words: 1.63%
 
-    masculine words: 2.54%
-    feminine words: 4.66%
-    neutral words: 1.43%
-    1.83 times as many feminine words as masculine words
+    The ratio of feminine to masculine words is 1.83
+    The ratio of feminine to neutral words is 2.87
+    The ratio of masculine to feminine words is 0.55
+    The ratio of masculine to neutral words is 1.57
+    The ratio of neutral to feminine words is 0.35
+    The ratio of neutral to masculine words is 0.64
 ```
-
 
 ### URL example ###
 ```
-    $ ./genderstat.rb feministing.com
-    reading in website: http://feministing.com
+    % ruby -Ilib bin/genderstat feministing.com
+    total words: 4908
+    feminine words: 20
+    masculine words: 3
+    neutral words: 17
 
-    total words:     4511
-    masculine words: 4
-    feminine words:  21
-    neutral words:   15
+    feminine words: 0.41%
+    masculine words: 0.06%
+    neutral words: 0.35%
 
-    masculine words: 0.09%
-    feminine words: 0.47%
-    neutral words: 0.33%
-    5.25 times as many feminine words as masculine words
+    The ratio of feminine to masculine words is 6.67
+    The ratio of feminine to neutral words is 1.18
+    The ratio of masculine to feminine words is 0.15
+    The ratio of masculine to neutral words is 0.18
+    The ratio of neutral to feminine words is 0.85
+    The ratio of neutral to masculine words is 5.67
 
+    %ruby -Ilib bin/genderstat stallman.org
+    total words: 5673
+    feminine words: 1
+    masculine words: 16
+    neutral words: 55
 
-    $ ./genderstat.rb stallman.org
-    reading in website: http://stallman.org
-
-    total words:     9440
-    masculine words: 22
-    feminine words:  2
-    neutral words:   74
-
-    masculine words: 0.23%
     feminine words: 0.02%
-    neutral words: 0.78%
-    11.00 times as many masculine words as feminine words
-```
+    masculine words: 0.28%
+    neutral words: 0.97%
 
+    The ratio of feminine to masculine words is 0.06
+    The ratio of feminine to neutral words is 0.02
+    The ratio of masculine to feminine words is 16.0
+    The ratio of masculine to neutral words is 0.29
+    The ratio of neutral to feminine words is 55.0
+    The ratio of neutral to masculine words is 3.44
+```
 todo
 ---
 - Add tests
