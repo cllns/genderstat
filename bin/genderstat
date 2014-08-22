@@ -6,4 +6,6 @@ if ARGV.length != 1
   abort("Usage: genderstat [FILE] or genderstat [URL]")
 end
 
-Genderstat.new(ARGV[0])
+genderstat = Genderstat.new(ARGV[0])
+genderstat.calculate
+genderstat.print_all_results

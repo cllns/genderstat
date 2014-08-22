@@ -41,7 +41,7 @@ class WordCounters
   end
 
   def round float
-    float.round(2)
+    float.round(Genderstat::DECIMAL_DIGITS_OF_PRECISION)
   end
 
 end
