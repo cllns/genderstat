@@ -2,7 +2,27 @@ genderstat - a text analyzer for gendered language
 ===
 genderstat calculates the amount (in terms of percentages and relative ratios) of gendered language in a file or on a site.
 
-It counts the number of words like "he", "his", "him", etc. and compares it to the number of words like "she", "hers", "her", etc.
+Specifically, it counts the number of gendered:
+- subject pronouns (she/he)
+- object pronouns (her/him)
+- possessives (hers/his)
+- generic nouns (woman/man, girl/boy, womankind/mankind, etc)
+
+It does so both in absolute numbers, and also calculates the percent.
+
+Additionally, it offers the ratios of between each too (e.g. 3.2 times as many
+masculine words as feminine words, etc).
+
+Word Lists
+---
+genderstat comes with three wordlists:
+- masculine_words.yaml
+- feminine_words.yaml
+- neutral_words.yaml
+
+They're completely editable, and genderstat will calculate for any files in the
+directory names ending with ```_words.yaml```
+
 
 Example
 -------
@@ -76,10 +96,14 @@ The `ralph-waldo-emerson.txt` file is a collection of his essays and `kate-chopi
     11.00 times as many masculine words as feminine words
 ```
 
+todo
+---
+- Add test
+- Make into a gem
+- Add support for more stats (like statistical significance?)
+- Add support for reading from stdin
 
 Dependencies
 ------------
-- [ruby-readability](https://github.com/iterationlabs/ruby-readability) - Required for URL's
-
-(NOTE: ruby-readability requires nokogiri, which can sometimes by a pain to install.)
+Ruby 2.0+
 
