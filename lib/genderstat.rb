@@ -34,16 +34,8 @@ class Genderstat
     end
 
 
-    rat_m_to_f = @word_counters.get_ratios["masculine_to_feminine"]
-    rat_f_to_m = (1 / rat_m_to_f).round(2)
-
-
-    if rat_m_to_f > 1
-      puts "#{rat_m_to_f} times as many masculine words as feminine words"
-    elsif rat_f_to_m > 1
-      puts "#{rat_f_to_m} times as many feminine words are masculine words"
-    else
-      puts "Same number of masculine and feminine words"
+    @word_counters.get_ratios.each do |name, ratio|
+      puts "The ratio of #{name} words is #{ratio}."
     end
   end
 end
