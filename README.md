@@ -115,8 +115,12 @@ todo
 - Make into a gem
 - Add support for more stats (like statistical significance?)
 - Add support for reading from stdin
+- Handle scenario of https->redirect (rather than weird nil error)
 
 Dependencies
 ------------
-Ruby 2.0+
+- Ruby 2.0+
+- open_uri_redirections gem
+
+You can get the gem by running ```bundle update```
 

@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'open_uri_redirections'
 require 'socket'
 
 class WebReader
@@ -8,7 +9,7 @@ class WebReader
 
   def read
     begin
-      open(@url).read
+      open(@url, :allow_redirections => :safe).read
     rescue Exception => ex
       handle_web_exceptions ex
     end
@@ -25,6 +26,10 @@ class WebReader
 
   # if the URL is doesn't match the URI regex, then prepend it with http://
   def clean_up_url url
-    "http://#{url}" if (url =~ URI.regexp).nil?
+    if (url =~ URI.regexp).nil?
+      "http://#{url}"
+    else
+      url
+    end
   end
 end
