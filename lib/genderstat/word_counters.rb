@@ -13,8 +13,8 @@ class WordCounters
 
   def get_totals
     {
-      "masculine" => @mas_words.counter,
-      "feminine" => @fem_words.counter
+      "masculine" => @mas_words.count,
+      "feminine" => @fem_words.count
     }
   end
 
@@ -27,7 +27,7 @@ class WordCounters
 
   def get_ratios
     {
-      "masculine_to_feminine" => @mas_words.counter / @fem_words.counter
+      "masculine_to_feminine" => @mas_words.count / @fem_words.count
     }
   end
 
