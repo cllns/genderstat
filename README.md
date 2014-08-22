@@ -98,7 +98,7 @@ The `ralph-waldo-emerson.txt` file is a collection of his essays and `kate-chopi
 
 todo
 ---
-- Add test
+- Add tests
 - Make into a gem
 - Add support for more stats (like statistical significance?)
 - Add support for reading from stdin
