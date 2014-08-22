@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'readability'
+require 'socket'
 
 class TextReader
   def initialize file_location
@@ -12,17 +13,23 @@ class TextReader
   end
 
   def read_from_file
-    if File.exist?(@file_location)
-      puts "reading in file: " + @file_location
-      IO.read(@file_location)
-    end
+    IO.read(@file_location) if File.exist? @file_location
   end
 
 
   def read_from_web
-    @file_location = "http://" + @file_location if @file_location[0,7] != "http://"
-    puts "reading in website: " + @file_location
-    open(@file_location).read
+    begin
+      clean_up_url
+      open(@file_location).read
+    rescue OpenURI::HTTPError, SocketError
+      abort "Could not open: #{@file_location}"
+    rescue Errno::ECONNREFUSED
+      abort "Does not support HTTPS: #{@file_location}"
+    end
   end
 
+  # if the URL is doesn't match the URI regex, then prepend it with http://
+  def clean_up_url url
+    @file_location = "http://#{@file_location}" if (@file_location =~ URI.regexp).nil?
+  end
 end
