@@ -5,37 +5,38 @@
 
 require 'yaml'
 require 'genderstat/text_reader'
-require 'genderstat/word_counter'
+require 'genderstat/word_counters'
 
 
 class Genderstat
   def initialize arg
-    @mas_words = WordCounter.new 'masculine_words.yaml'
-    @fem_words = WordCounter.new 'feminine_words.yaml'
+    @word_counters = WordCounters.new
 
     @all_words = TextReader.new(arg).read
 
-    @all_words.each { |word|
-      @mas_words.is_in_here?(word)
-      @fem_words.is_in_here?(word)
-    }
+    @all_words.each { |word| @word_counters.check(word) }
 
     print_results
   end
 
   def print_results
     puts
-    puts "total words:     #{@all_words.count.to_s}"
-    puts "masculine words: #{@mas_words.counter.to_s}"
-    puts "feminine words:  #{@fem_words.counter.to_s}"
-    puts
-    puts "masculine words: #{@mas_words.get_percent @all_words.count}%"
-    puts "feminine words:  #{@fem_words.get_percent @all_words.count}%"
+    puts "total words: #{@all_words.count.to_s}"
 
-    # cast to float to allow for infinity
-    rat_m_to_f = @mas_words.get_relative_frequency @fem_words.counter
-    # Yes of course I could just use the inverse of rat_m_to_f but why bother?
-    rat_f_to_m = @fem_words.get_relative_frequency @mas_words.counter
+    @word_counters.get_totals.each do |name, count|
+      puts "#{name} words: #{count}"
+    end
+
+    puts
+
+    @word_counters.get_percentages(@all_words.count).each do |name, percentage|
+      puts "#{name} words: #{percentage}%"
+    end
+
+
+    rat_m_to_f = @word_counters.get_ratios["masculine_to_feminine"]
+    rat_f_to_m = (1 / rat_m_to_f).round(2)
+
 
     if rat_m_to_f > 1
       puts "#{rat_m_to_f} times as many masculine words as feminine words"
