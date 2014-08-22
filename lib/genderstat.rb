@@ -4,9 +4,8 @@
 # Sean Collins 11/11/12
 
 require 'yaml'
-require './lib/genderstat/text_reader'
-require './lib/genderstat/word_counter'
-require './lib/genderstat/calculator'
+require 'genderstat/text_reader'
+require 'genderstat/word_counter'
 
 
 class Genderstat
