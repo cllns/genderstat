@@ -35,7 +35,7 @@ class Genderstat
 
 
     @word_counters.get_ratios.each do |name, ratio|
-      puts "The ratio of #{name} words is #{ratio}."
+      puts "The ratio of #{name} words is #{ratio}"
     end
   end
 end

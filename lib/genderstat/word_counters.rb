@@ -14,7 +14,6 @@ class WordCounters
   end
 
   def get_totals
-    # We could use inject/reduce here, but this is clearer, I think
     h = Hash.new
     @word_counters.each do |wc|
       h[wc.name] = wc.count
@@ -31,10 +30,21 @@ class WordCounters
     h
   end
 
+  # We get the ratios of counts among all word_lists
+  # This returns a hash with keys that are named "name_to_other_name"
+  # This loop does twice as much work as it needs to, since the ratios
+  #  are reciprocals of one another, but oh well! It's only division.
   def get_ratios
-    f = @word_counters[0] # f = first
-    s = @word_counters[1] # s = second since there are only 2 right now
-    {  "#{f.name}_to_#{s.name}" => round( ( f.count.to_f / s.count.to_f) ) }
+    h = Hash.new
+    @word_counters.each do |wc|
+      # We skip over the ratio of name_to_name, since it'll always be one
+      @other_word_counters = @word_counters - [wc]
+      @other_word_counters.each do |other_wc|
+        ratio = round(( wc.count.to_f / other_wc.count.to_f) )
+        h["#{wc.name}_to_#{other_wc.name}"] = ratio
+      end
+    end
+    h
   end
 
   def round float
