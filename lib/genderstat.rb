@@ -12,14 +12,12 @@ class Genderstat
   def initialize arg
     @mas_words = WordCounter.new 'masculine_words.yaml'
     @fem_words = WordCounter.new 'feminine_words.yaml'
-    @neu_words = WordCounter.new 'neutral_words.yaml'
 
     @all_words = TextReader.new(arg).read
 
     @all_words.each { |word|
       @mas_words.is_in_here?(word)
       @fem_words.is_in_here?(word)
-      @neu_words.is_in_here?(word)
     }
 
     print_results
@@ -30,11 +28,9 @@ class Genderstat
     puts "total words:     #{@all_words.count.to_s}"
     puts "masculine words: #{@mas_words.counter.to_s}"
     puts "feminine words:  #{@fem_words.counter.to_s}"
-    puts "neutral words:   #{@neu_words.counter.to_s}"
     puts
     puts "masculine words: #{@mas_words.get_percent @all_words.count}%"
     puts "feminine words:  #{@fem_words.get_percent @all_words.count}%"
-    puts "neutral words:   #{@neu_words.get_percent @all_words.count}%"
 
     # cast to float to allow for infinity
     rat_m_to_f = @mas_words.get_relative_frequency @fem_words.counter
