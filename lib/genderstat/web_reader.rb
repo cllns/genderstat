@@ -1,5 +1,4 @@
 require 'open-uri'
-require 'readability'
 require 'socket'
 
 class WebReader
