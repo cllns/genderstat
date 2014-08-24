@@ -24,13 +24,19 @@ They're completely editable, and genderstat will calculate for any files in the
 directory names ending with ```_words.yaml```
 
 
-Example
+Installation
 -------
-`ruby -Ilib bin/genderstat [FILE]`
+
+`gem install genderstat`
+
+Usage
+---
+
+`genderstat [FILE]`
 
 or
 
-`ruby -Ilib bin/genderstat [URL]`
+`genderstat [URL]`
 
 
 ### File example ###
