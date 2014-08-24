@@ -112,7 +112,6 @@ The `ralph-waldo-emerson.txt` file is a collection of his essays and `kate-chopi
 todo
 ---
 - Add tests
-- Make into a gem
 - Add support for more stats (like statistical significance?)
 - Add support for reading from stdin
 - Handle scenario of https->redirect (rather than weird nil error)
