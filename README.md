@@ -1,4 +1,4 @@
-genderstat - a text analyzer for gendered language
+genderstat
 ===
 genderstat calculates the amount (in terms of percentages and relative ratios) of gendered language in a file or on a site.
 
@@ -11,14 +11,14 @@ Specifically, it counts the number of gendered:
 It does so both in absolute numbers, and also calculates the percent.
 
 Additionally, it offers the ratios of between each too (e.g. 3.2 times as many
-masculine words as feminine words, etc).
+masculine words as feminine words).
 
 Word Lists
 ---
 genderstat comes with three wordlists:
-- masculine_words.yaml
-- feminine_words.yaml
-- neutral_words.yaml
+- ```masculine_words.yaml```
+- ```feminine_words.yaml```
+- ```neutral_words.yaml```
 
 They're completely editable, and genderstat will calculate for any files in the
 directory names ending with ```_words.yaml```
@@ -120,7 +120,8 @@ todo
 Dependencies
 ------------
 - Ruby 2.0+
-- open_uri_redirections gem
+- ```open_uri_redirections``` gem
 
-You can get the gem by running ```bundle update```
+You can get the gem by running ```bundle update```. It's not strictly necessary,
+it's just helpful for HTTP->HTTPS redirections.
 
