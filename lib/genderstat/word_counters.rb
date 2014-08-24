@@ -3,7 +3,13 @@ require 'genderstat/word_counter'
 class WordCounters
   def initialize
     @word_counters = []
-    Dir.glob("*_words.yaml").each do |filename|
+    # The word lists are two directories higher than this file, so that's
+    # how we have to reference their locations
+    this_file_path = File.dirname(__FILE__)
+    word_list_relative_location = "../../*_words.yaml"
+    word_list_location = File.join(this_file_path, word_list_relative_location)
+
+    Dir.glob(word_list_location).each do |filename|
       @word_counters << WordCounter.new(filename)
     end
   end

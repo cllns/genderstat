@@ -4,8 +4,8 @@ class WordCounter
   attr_reader :count, :name
 
   def initialize filename
-    @words = Set.new YAML.load_file filename
-    @name = filename.split('_').first
+    @words = Set.new YAML.load_file(filename)
+    @name = filename.split('_').first.split('/').last
     @count = 0
   end
 
