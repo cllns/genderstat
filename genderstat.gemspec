@@ -1,3 +1,4 @@
+$:.push File.expand_path("../lib", __FILE__)
 require "genderstat/version"
 
 Gem::Specification.new do |s|
@@ -9,6 +10,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Sean Collins"]
   s.email       = 'sean@cllns.com'
   s.files       = `git ls-files`.split($/)
+  s.executables = 'genderstat'
   s.homepage    = 'http://github.org/cllns/genderstat'
   s.license     = 'MIT'
 end
