@@ -122,6 +122,6 @@ Dependencies
 - Ruby 2.0+
 - ```open_uri_redirections``` gem
 
-You can get the gem by running ```bundle update```. It's not strictly necessary,
+You can get the gem by running ```bundle install```. It's not strictly necessary,
 it's just helpful for HTTP->HTTPS redirections.
 
