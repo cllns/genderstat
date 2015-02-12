@@ -125,7 +125,4 @@ todo
 Dependencies
 ------------
 - Ruby 2.0+
-- ```open_uri_redirections``` gem
-
-  It's not strictly necessary, it's just allows for HTTP->HTTPS redirections.
-
+- ```open_uri_redirections``` gem (optional, allows HTTP->HTTPS redirections)
