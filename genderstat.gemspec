@@ -15,5 +15,7 @@ Gem::Specification.new do |s|
   s.homepage              = 'http://github.org/cllns/genderstat'
   s.license               = 'MIT'
 
-  s.add_runtime_dependency 'open_uri_redirections'
+  s.add_runtime_dependency 'open_uri_redirections', '~> 0.2.1'
+
+  s.add_development_dependency 'rake', '~> 10.0'
 end
